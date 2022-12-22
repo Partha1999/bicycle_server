@@ -161,7 +161,11 @@ async function run() {
     });
 
     // post a new user
-    
+    app.post("/advertise", async (req, res) => {
+      const ads = req.body;
+      const result = await advertiseCollection.insertOne(ads);
+      res.send(result);
+    });
 
     //update booking
     app.put("/booking/:id", verifyToken, async (req, res) => {
